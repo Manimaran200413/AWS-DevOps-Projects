@@ -80,3 +80,32 @@ The deployment follows this architecture:
                          │
                          ▼
                   Public Website
+
+---
+
+## ☁️ AWS Services
+
+- Amazon S3
+- Amazon CloudFront
+- Origin Access Control (OAC)
+- AWS CLI
+
+---
+
+## 🛠️ Technologies
+
+- HTML
+- CSS
+- JavaScript
+- AWS CLI
+- GitHub
+
+---
+
+## 📂 Project Structure
+
+```text
+Level-01-AWS-S3-CloudFront/
+├── README.md
+├── website/
+└── Documentation/

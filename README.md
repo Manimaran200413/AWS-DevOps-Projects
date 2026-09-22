@@ -25,6 +25,7 @@ Kubernetes, monitoring, and observability.
 - Linux
 - Git & GitHub
 - Jenkins
+- Tomcat
 - Maven
 - Docker
 - Amazon ECR
