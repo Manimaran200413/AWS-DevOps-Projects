@@ -80,6 +80,7 @@ The deployment follows this architecture:
                          │
                          ▼
                   Public Website
+```
 
 ---
 
