@@ -19,7 +19,7 @@ The complete project documentation is available here:
 
 ### 📘 Level 2 Documentation
 
-[Open Level-02-EC2-Nginx-Documentation.pdf](Level-02-EC2-Nginx-Documentation.pdf)
+[Open Level-02-EC2-Nginx-Documentation.pdf](https://github.com/Manimaran200413/AWS-DevOps-Projects/blob/40d24929a5f217954af94e8e3ebc9097becc52bf/Level-02-EC2-Nginx-webHost/Documentation/Level_2_EC2_Nginx_Documentation.pdf)
 
 The PDF contains the complete project implementation and
 supporting evidence.
