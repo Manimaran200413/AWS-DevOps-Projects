@@ -9,7 +9,7 @@ Kubernetes, monitoring, and observability.
 | Level | Project | Status |
 |---|---|---|
 | 01 | Static Website Deployment using S3 & CloudFront | ✅ Completed |
-| 02 | EC2 + Nginx Web Server | 🔄 Upcoming |
+| 02 | EC2 + Nginx Web Server | ✅ Completed |
 | 03 | GitHub + Jenkins + Nginx CI/CD | 🔄 Upcoming |
 | 04 | Jenkins + Maven + Tomcat CI/CD | 🔄 Upcoming |
 | 05 | Docker + Java + Tomcat + ECR | 🔄 Upcoming |
