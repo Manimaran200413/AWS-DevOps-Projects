@@ -17,7 +17,7 @@ file, and the WAR is deployed to a separate Apache Tomcat server
 through SSH/SCP.
 
 The deployed Java web application is then accessed through
-Tomcat on port 8080. :contentReference[oaicite:1]{index=1}
+Tomcat on port 8080.
 
 ---
 
