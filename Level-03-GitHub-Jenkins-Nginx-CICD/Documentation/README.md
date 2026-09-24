@@ -23,7 +23,7 @@ The complete implementation report is available here:
 
 ### 📘 Level 3 Project Report
 
-[Open Level-03-GitHub-Jenkins-Nginx-CICD-Documentation.pdf](Level-03-GitHub-Jenkins-Nginx-CICD-Documentation.pdf)
+[Open Level-03-GitHub-Jenkins-Nginx-CICD-Documentation.pdf](https://github.com/Manimaran200413/AWS-DevOps-Projects/blob/a32d83ecee9de791638ef19592973b1ae4aec57d/Level-03-GitHub-Jenkins-Nginx-CICD/Documentation/Level_3_GitHub_Jenkins_Nginx_CICD_Documentation.pdf)
 
 The PDF contains the complete project implementation,
 architecture, configuration, testing, troubleshooting,
