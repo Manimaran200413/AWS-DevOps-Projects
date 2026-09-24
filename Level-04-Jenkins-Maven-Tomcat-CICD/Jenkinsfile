@@ -1,0 +1,115 @@
+pipeline {
+
+    agent any
+
+    tools {
+        jdk 'Java17'
+        maven 'Maven3'
+    }
+
+    environment {
+        APP_DIR = 'sample-app'
+        TOMCAT_HOST = 'YOUR_TOMCAT_EC2_PUBLIC_IP'
+        TOMCAT_USER = 'tomcat'
+        TOMCAT_WEBAPPS = '/opt/tomcat/webapps'
+        SSH_CREDENTIALS = 'tomcat-ssh-key'
+        WAR_NAME = 'sample.war'
+    }
+
+    stages {
+
+        stage('Tool Install') {
+            steps {
+                echo 'Verifying Java and Maven environment...'
+
+                sh '''
+                    java -version
+                    mvn --version
+                '''
+            }
+        }
+
+        stage('Checkout') {
+            steps {
+                echo 'Checking out source code from GitHub...'
+
+                checkout scm
+            }
+        }
+
+        stage('Build') {
+            steps {
+                echo 'Building Java web application using Maven...'
+
+                dir("${APP_DIR}") {
+                    sh '''
+                        mvn clean test package
+                    '''
+                }
+            }
+
+            post {
+                success {
+                    echo 'Maven build completed successfully.'
+                    echo 'WAR artifact generated inside sample-app/target/'
+                }
+
+                failure {
+                    echo 'Maven build failed.'
+                }
+            }
+        }
+
+        stage('Deploy') {
+            steps {
+                echo 'Deploying WAR file to Apache Tomcat...'
+
+                sshagent(credentials: ["${SSH_CREDENTIALS}"]) {
+
+                    sh '''
+                        echo "Testing SSH connectivity..."
+
+                        ssh -o StrictHostKeyChecking=no \
+                            ${TOMCAT_USER}@${TOMCAT_HOST} \
+                            "echo SSH connection successful"
+
+                        echo "Copying WAR file to Tomcat server..."
+
+                        scp -o StrictHostKeyChecking=no \
+                            ${APP_DIR}/target/*.war \
+                            ${TOMCAT_USER}@${TOMCAT_HOST}:${TOMCAT_WEBAPPS}/${WAR_NAME}
+
+                        echo "Restarting Tomcat..."
+
+                        ssh -o StrictHostKeyChecking=no \
+                            ${TOMCAT_USER}@${TOMCAT_HOST} \
+                            "sudo systemctl restart tomcat"
+
+                        echo "Deployment completed successfully."
+                    '''
+                }
+            }
+        }
+    }
+
+    post {
+
+        success {
+            echo '=========================================='
+            echo ' LEVEL 4 CI/CD PIPELINE SUCCESSFUL'
+            echo '=========================================='
+            echo 'Application deployed to Apache Tomcat.'
+        }
+
+        failure {
+            echo '=========================================='
+            echo ' LEVEL 4 CI/CD PIPELINE FAILED'
+            echo '=========================================='
+            echo 'Check the Jenkins console output.'
+        }
+
+        always {
+            echo 'Pipeline execution completed.'
+        }
+    }
+}

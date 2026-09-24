@@ -11,7 +11,7 @@ Kubernetes, monitoring, and observability.
 | 01 | Static Website Deployment using S3 & CloudFront | ✅ Completed |
 | 02 | EC2 + Nginx Web Server | ✅ Completed |
 | 03 | GitHub + Jenkins + Nginx CI/CD | ✅ Completed |
-| 04 | Jenkins + Maven + Tomcat CI/CD | 🔄 Upcoming |
+| 04 | Jenkins + Maven + Tomcat CI/CD | ✅ Completed |
 | 05 | Docker + Java + Tomcat + ECR | 🔄 Upcoming |
 | 06 | AWS CI/CD + Terraform | 🔄 Upcoming |
 | 07 | AWS Infrastructure using Terraform | 🔄 Upcoming |
