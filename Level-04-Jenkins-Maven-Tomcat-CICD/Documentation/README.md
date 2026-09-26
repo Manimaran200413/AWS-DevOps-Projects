@@ -27,7 +27,7 @@ The complete implementation report is available here:
 
 ### 📘 Level 4 Project Report
 
-[Open Level-04-Jenkins-Maven-Tomcat-CICD-Documentation.pdf](https://github.com/Manimaran200413/AWS-DevOps-Projects/blob/6c7759172794b0106077086508a7c37787f724b8/Level-04-Jenkins-Maven-Tomcat-CICD/Documentation/Level_4_Jenkins_Maven_Tomcat_CICD_Project_Documentation.pdf)
+[Open Level-04-Jenkins-Maven-Tomcat-CICD-Documentation.pdf](https://github.com/Manimaran200413/AWS-DevOps-Projects/tree/5f05762a2e2c9ad71e880df98b6dbfcaaa93e1c1/Level-04-Jenkins-Maven-Tomcat-CICD/Documentation)
 
 The PDF contains the complete project implementation,
 architecture, configuration, testing, troubleshooting,

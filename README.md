@@ -12,8 +12,8 @@ Kubernetes, monitoring, and observability.
 | 02 | EC2 + Nginx Web Server | ✅ Completed |
 | 03 | GitHub + Jenkins + Nginx CI/CD | ✅ Completed |
 | 04 | Jenkins + Maven + Tomcat CI/CD | ✅ Completed |
-| 05 | Docker + Java + Tomcat + ECR | 🔄 Upcoming |
-| 06 | AWS CI/CD + Terraform | 🔄 Upcoming |
+| 05 | Docker + Java + Tomcat + ECR | ✅ Completed |
+| 06 | AWS CI/CD + Terraform | ✅ Completed |
 | 07 | AWS Infrastructure using Terraform | 🔄 Upcoming |
 | 08 | AWS Monitoring | 🔄 Upcoming |
 | 09 | Kubernetes + Kops | 🔄 Upcoming |
