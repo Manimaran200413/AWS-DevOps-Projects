@@ -30,7 +30,7 @@ The complete implementation report is available here:
 
 ### 📘 Level 6 Project Report
 
-[Open Level_6_AWS_CI_CD_Java_Tomcat_Project_Documentation_Complete.pdf](https://github.com/Manimaran200413/AWS-DevOps-Projects/tree/5f05762a2e2c9ad71e880df98b6dbfcaaa93e1c1/Level-04-Jenkins-Maven-Tomcat-CICD/Documentation)
+[Open Level_6_AWS_CI_CD_Java_Tomcat_Project_Documentation_Complete.pdf](https://github.com/Manimaran200413/AWS-DevOps-Projects/blob/0aeb564fd5ea14ff1ee0857e7939dbd3eff25a92/Level-06-AWS-CICD-Java-Tomcat-AutoScaling-ALB/Documentation/Level_6_AWS_CI_CD_Java_Tomcat_Project_Documentation_Complete.pdf)
 
 The PDF contains the complete project implementation,
 architecture, configuration, testing, troubleshooting,
