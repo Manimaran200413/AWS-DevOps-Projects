@@ -28,7 +28,7 @@ The complete implementation report is available here:
 
 ### 📘 Level 5 Project Report
 
-[Open Level_5_Containerized_Java_Tomcat_CICD_Project_Documentation_Complete.pdf](https://github.com/Manimaran200413/AWS-DevOps-Projects/tree/f8f874d429ff761655bb3bae5bf46b3aa9db478a/Level-05-Containerized-Java-Tomcat-CICD/Documentation)
+[Open Level_5_Containerized_Java_Tomcat_CICD_Project_Documentation_Complete.pdf](https://github.com/Manimaran200413/AWS-DevOps-Projects/blob/f8f874d429ff761655bb3bae5bf46b3aa9db478a/Level-05-Containerized-Java-Tomcat-CICD/Documentation/Level_5_Containerized_Java_Tomcat_CICD_Project_Documentation_Complete.pdf)
 
 The PDF contains the complete project implementation,
 architecture, configuration, testing, troubleshooting,
