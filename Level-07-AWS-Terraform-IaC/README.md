@@ -102,9 +102,12 @@ The main objectives of this project are:
                                     │ Docker Image│
                                     └─────────────┘
 
+```
 ---
 
 # 🔄 Complete Infrastructure Workflow
+
+```text
 
 Terraform Project
        ↓
@@ -143,6 +146,8 @@ Auto Scaling Group
 Application Validation
        ↓
 terraform destroy
+
+```
 
 ---
 
