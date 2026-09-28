@@ -180,6 +180,8 @@ AWS CLI
 
 📁 Project Structure
 
+```text
+
 Level-07-AWS-Terraform-IaC/
 │
 ├── README.md
@@ -209,14 +211,16 @@ Level-07-AWS-Terraform-IaC/
     ├── README.md
     └── Level_7_AWS_Infrastructure_as_Code_with_Terraform_COMPLETE_PROJECT_DOCUMENTATION.pdf
 
+```
+
 ---
 
 # 📄 Terraform Files
-provider.tf
+**provider.tf**
 
 Defines the Terraform and AWS provider configuration.
 
-variables.tf
+**variables.tf**
 
 Contains reusable Terraform variables such as:
 
@@ -227,7 +231,8 @@ Instance type
 VPC CIDR
 Public subnet CIDRs
 Private subnet CIDRs
-terraform.tfvars.example
+
+**terraform.tfvars**
 
 Provides example environment-specific values.
 
@@ -235,11 +240,11 @@ Create your local:
 
 terraform.tfvars
 
-from this example file.
+from this file.
 
 Do not commit sensitive values.
 
-vpc.tf
+**vpc.tf**
 
 Creates and configures:
 
@@ -251,7 +256,8 @@ NAT Gateway
 Public route table
 Private route table
 Route associations
-security-groups.tf
+
+**security-groups.tf**
 
 Creates security groups for:
 
@@ -261,7 +267,7 @@ EC2 application instances
 The EC2 application traffic is restricted to the intended ALB-to-
 application path.
 
-iam.tf
+**iam.tf**
 
 Creates:
 
@@ -269,12 +275,13 @@ IAM role
 IAM policy
 IAM policy attachment
 EC2 instance profile
-ecr.tf
+
+**ecr.tf**
 
 Creates the Amazon ECR repository used for the Docker application
 image.
 
-ec2.tf
+**ec2.tf**
 
 Defines:
 
@@ -287,7 +294,8 @@ User data
 Docker/Tomcat startup
 ECR authentication
 Application container startup
-alb.tf
+
+**alb.tf**
 
 Creates:
 
@@ -295,12 +303,13 @@ Application Load Balancer
 Target Group
 ALB Listener
 ALB networking configuration
-autoscaling.tf
+
+**autoscaling.tf**
 
 Creates and configures the Auto Scaling Group using the Launch
 Template.
 
-outputs.tf
+**outputs.tf**
 
 Exports useful infrastructure information such as:
 
@@ -316,6 +325,7 @@ Target Group information
 # 🐳 Docker and SampleApp
 
 The project contains a Java/Tomcat SampleApp.
+```text
 
 SampleApp/
 │
@@ -324,6 +334,7 @@ SampleApp/
 │   └── ...
 └── target/
     └── ...
+```
 
 The Maven project is packaged into a deployable application artifact
 and containerized using Docker.
@@ -375,12 +386,15 @@ The project uses separate security controls for the ALB and EC2
 application tier.
 
 The intended traffic flow is:
+```text
 
 Internet
    ↓
 ALB :80
    ↓
 EC2 :8080
+
+```
 
 Do not commit:
 
@@ -397,6 +411,7 @@ Use IAM roles/instance profiles wherever possible.
 --- 
 
 # 🌐 Application Request Flow
+```text
 User
  ↓
 Application Load Balancer :80
@@ -410,6 +425,7 @@ Docker Container
 Tomcat
  ↓
 Java Web Application
+```
 
 --- 
 
@@ -442,11 +458,13 @@ The final application is accessed through the ALB endpoint.
 # 📚 Documentation
 
 The complete implementation documentation is available in:
+```text
 
 Documentation/
 │
 ├── README.md
 └── Level_7_AWS_Infrastructure_as_Code_with_Terraform_COMPLETE_PROJECT_DOCUMENTATION.pdf
+```
 
 The documentation contains the complete implementation procedure and
 screenshot evidence.

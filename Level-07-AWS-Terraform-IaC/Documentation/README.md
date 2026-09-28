@@ -38,6 +38,7 @@ served through the Application Load Balancer.
 # 🏗️ System Architecture
 
 The documented architecture follows:
+```text
 
 Developer
     ↓
@@ -56,6 +57,7 @@ EC2 :8080
 Docker / Tomcat
     ↓
 Java Web Application
+```
 
 The Level 7 report presents this architecture on the system
 architecture page and identifies the same complete flow.
@@ -63,6 +65,7 @@ architecture page and identifies the same complete flow.
 ---
 
 # 🔄 Complete Infrastructure Workflow
+```text
 1. Terraform Project
         ↓
 2. terraform init
@@ -90,6 +93,7 @@ architecture page and identifies the same complete flow.
 13. Application Validation
         ↓
 14. terraform destroy
+```
 
 The project report defines this as the complete infrastructure
 workflow.
@@ -131,6 +135,7 @@ Amazon ECR
 # 📁 Terraform Project Structure
 
 The documentation covers the following Terraform project files:
+```text
 
 Terraform/
 │
@@ -149,9 +154,9 @@ Terraform/
 │
 └── SampleApp/
     ├── pom.xml
-    ├── src/
-    └── target/
-
+    └── src/
+    
+```
 ---
 
 # Terraform File Responsibilities
@@ -380,6 +385,7 @@ Application Load Balancer
 # 🌐 Application Request Flow
 
 The documented runtime flow is:
+```text
 
 User
  ↓
@@ -394,12 +400,14 @@ Docker
 Tomcat
  ↓
 Java Web Application
+```
 
 ---
 
 # 🧪 Validation
 
 The project validates:
+```text
 
 ✓ Terraform initialization
 ✓ Terraform validation
@@ -421,6 +429,7 @@ The project validates:
 ✓ Application availability
 ✓ Terraform cleanup
 🧹 Terraform Cleanup
+```
 
 The documentation also demonstrates the Terraform lifecycle cleanup
 using:
@@ -534,11 +543,13 @@ AWS infrastructure reference
 
 ---
 # 📁 Documentation Folder
+```text
 Documentation/
 │
 ├── README.md
 │
-└── Level_7_AWS_Infrastructure_as_Code_with_Terraform_COMPLETE_PROJECT_DOCUMENTATION.pdf
+└── Level_7_AWS_Infrastructure_as_Code_with_Terraform.pdf
+```
 
 ---
 
