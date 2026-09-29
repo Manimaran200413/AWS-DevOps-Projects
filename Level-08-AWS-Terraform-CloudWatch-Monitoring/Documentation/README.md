@@ -1,6 +1,6 @@
 # 📌 Project Title
 
-## AWS Infrastructure as Code with Terraform and CloudWatch Monitoring
+**AWS Infrastructure as Code with Terraform and CloudWatch Monitoring**
 
 ---
 

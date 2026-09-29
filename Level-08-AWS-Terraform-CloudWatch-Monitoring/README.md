@@ -555,6 +555,9 @@ target/ contains Maven-generated build artifacts.
 ---
 
 # 🔍 Application Request Flow
+
+```text
+
 User
  ↓
 Application Load Balancer :80
@@ -571,8 +574,14 @@ Tomcat
  ↓
 Java Web Application
  ↓
-Response
-📊 Monitoring Flow
+
+```
+---
+
+# 📊 Monitoring Flow
+
+```text
+
 EC2
  │
  ├── CPU / System Metrics
