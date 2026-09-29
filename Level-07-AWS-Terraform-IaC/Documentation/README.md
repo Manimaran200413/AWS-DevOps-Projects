@@ -1,6 +1,6 @@
-## 📌 Project Title
+# 📌 Project Title
 
-AWS Infrastructure as Code with Terraform for Java Web Application Deployment
+## AWS Infrastructure as Code with Terraform for Java Web Application Deployment
 
 ---
 
@@ -230,14 +230,17 @@ The documentation starts with:
 
 Terraform verification
 AWS CLI verification
-AWS identity verification
-provider.tf
+AWS identity 
+
+**provider.tf**
+
 AWS provider configuration
 Variables
-terraform.tfvars
-terraform init
-terraform validate
-terraform plan
+
+**terraform.tfvars**
+**terraform init**
+**terraform validate**
+**terraform plan**
 
 The first implementation phase is documented beginning with Terraform
 and AWS CLI verification and provider configuration.
@@ -434,7 +437,7 @@ The project validates:
 The documentation also demonstrates the Terraform lifecycle cleanup
 using:
 
-terraform destroy
+**terraform destroy**
 
 This demonstrates that the same Infrastructure as Code used to
 provision the environment can also be used to remove the managed
@@ -490,37 +493,37 @@ Terraform lifecycle management
 
 This documentation can be used to prepare for questions such as:
 
-What is Infrastructure as Code?
+**What is Infrastructure as Code?**
 
 Infrastructure as Code is the practice of defining and managing
 infrastructure using machine-readable configuration instead of
 manually creating resources.
 
-Why Terraform?
+**Why Terraform?**
 
 Terraform allows infrastructure to be defined declaratively and
 provides a repeatable provisioning and lifecycle workflow.
 
-What is the purpose of terraform plan?
+**What is the purpose of terraform plan?**
 
 It previews the infrastructure changes Terraform intends to make
 before applying them.
 
-What is the purpose of terraform apply?
+**What is the purpose of terraform apply?**
 
 It provisions or updates the infrastructure according to the
 Terraform configuration.
 
-What is the purpose of terraform destroy?
+**What is the purpose of terraform destroy?**
 
 It removes the infrastructure managed by the Terraform configuration.
 
-Why use a Launch Template?
+**Why use a Launch Template?**
 
 The Launch Template provides a repeatable configuration for EC2
 instances and their startup process.
 
-Why use an ALB?
+**Why use an ALB?**
 
 The Application Load Balancer provides a public entry point and
 forwards traffic to healthy application targets.

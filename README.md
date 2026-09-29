@@ -15,7 +15,7 @@ Kubernetes, monitoring, and observability.
 | 05 | Docker + Java + Tomcat + ECR | ✅ Completed |
 | 06 | AWS CI/CD + Terraform | ✅ Completed |
 | 07 | AWS Infrastructure using Terraform | ✅ Completed |
-| 08 | AWS Monitoring | 🔄 Upcoming |
+| 08 | AWS Monitoring using Terraform | ✅ Completed |
 | 09 | Kubernetes + Kops | 🔄 Upcoming |
 | 10 | Prometheus + Grafana | 🔄 Upcoming |
 

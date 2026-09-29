@@ -30,7 +30,7 @@ credentials
 Thumbs.db
 
 # Java / Maven
-.target/
+SampleApp/target/
 *.class
 
 # Logs
