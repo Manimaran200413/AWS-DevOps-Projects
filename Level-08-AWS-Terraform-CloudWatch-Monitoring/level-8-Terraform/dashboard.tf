@@ -1,0 +1,119 @@
+resource "aws_cloudwatch_dashboard" "main" {
+  dashboard_name = "${var.project_name}-dashboard"
+
+  dashboard_body = jsonencode({
+    widgets = [
+      {
+        type   = "metric"
+        x      = 0
+        y      = 0
+        width  = 12
+        height = 6
+
+        properties = {
+          title = "EC2 CPU Utilization"
+
+          metrics = [
+            [
+              "AWS/EC2",
+              "CPUUtilization",
+              "AutoScalingGroupName",
+              aws_autoscaling_group.app.name
+            ]
+          ]
+
+          period = 60
+          stat   = "Average"
+          region = var.aws_region
+
+          view = "timeSeries"
+        }
+      },
+
+      {
+        type   = "metric"
+        x      = 12
+        y      = 0
+        width  = 12
+        height = 6
+
+        properties = {
+          title = "ALB Request Count"
+
+          metrics = [
+            [
+              "AWS/ApplicationELB",
+              "RequestCount",
+              "LoadBalancer",
+              aws_lb.app.arn_suffix
+            ]
+          ]
+
+          period = 60
+          stat   = "Sum"
+          region = var.aws_region
+
+          view = "timeSeries"
+        }
+      },
+
+      {
+        type   = "metric"
+        x      = 0
+        y      = 6
+        width  = 12
+        height = 6
+
+        properties = {
+          title = "ALB Target Response Time"
+
+          metrics = [
+            [
+              "AWS/ApplicationELB",
+              "TargetResponseTime",
+              "LoadBalancer",
+              aws_lb.app.arn_suffix,
+              "TargetGroup",
+              aws_lb_target_group.app.arn_suffix
+            ]
+          ]
+
+          period = 60
+          stat   = "Average"
+          region = var.aws_region
+
+          view = "timeSeries"
+        }
+      },
+
+      {
+        type   = "metric"
+        x      = 12
+        y      = 6
+        width  = 12
+        height = 6
+
+        properties = {
+          title = "Unhealthy Targets"
+
+          metrics = [
+            [
+              "AWS/ApplicationELB",
+              "UnHealthyHostCount",
+              "LoadBalancer",
+              aws_lb.app.arn_suffix,
+              "TargetGroup",
+              aws_lb_target_group.app.arn_suffix
+            ]
+          ]
+
+          period = 60
+          stat   = "Maximum"
+          region = var.aws_region
+
+          view = "timeSeries"
+        }
+      }
+    ]
+  })
+}

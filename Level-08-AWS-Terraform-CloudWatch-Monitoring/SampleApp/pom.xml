@@ -1,0 +1,97 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project xmlns="http://maven.apache.org/POM/4.0.0"
+         xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0
+                             https://maven.apache.org/xsd/maven-4.0.0.xsd">
+
+    <modelVersion>4.0.0</modelVersion>
+
+    <groupId>com.sampleapp</groupId>
+    <artifactId>sample</artifactId>
+    <version>1.0.0</version>
+    <packaging>war</packaging>
+
+    <name>Sample Web Application</name>
+    <description>A modern Java web application for Apache Tomcat</description>
+
+    <properties>
+        <java.version>17</java.version>
+        <maven.compiler.source>17</maven.compiler.source>
+        <maven.compiler.target>17</maven.compiler.target>
+        <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+        <project.reporting.outputEncoding>UTF-8</project.reporting.outputEncoding>
+        <jakarta.servlet.version>5.0.0</jakarta.servlet.version>
+        <jakarta.servlet.jsp.version>3.0.0</jakarta.servlet.jsp.version>
+        <jakarta.el.version>4.0.0</jakarta.el.version>
+        <maven.war.plugin.version>3.3.2</maven.war.plugin.version>
+        <maven.compiler.plugin.version>3.11.0</maven.compiler.plugin.version>
+    </properties>
+
+    <dependencies>
+
+        <!-- Jakarta Servlet API (provided by Tomcat 10+) -->
+        <dependency>
+            <groupId>jakarta.servlet</groupId>
+            <artifactId>jakarta.servlet-api</artifactId>
+            <version>${jakarta.servlet.version}</version>
+            <scope>provided</scope>
+        </dependency>
+
+        <!-- Jakarta JSP API (provided by Tomcat 10+) -->
+        <dependency>
+            <groupId>jakarta.servlet.jsp</groupId>
+            <artifactId>jakarta.servlet.jsp-api</artifactId>
+            <version>${jakarta.servlet.jsp.version}</version>
+            <scope>provided</scope>
+        </dependency>
+
+        <!-- Jakarta EL API -->
+        <dependency>
+            <groupId>jakarta.el</groupId>
+            <artifactId>jakarta.el-api</artifactId>
+            <version>${jakarta.el.version}</version>
+            <scope>provided</scope>
+        </dependency>
+
+        <!-- JSTL (Standard Tag Library) -->
+        <dependency>
+            <groupId>org.glassfish.web</groupId>
+            <artifactId>jakarta.servlet.jsp.jstl</artifactId>
+            <version>2.0.0</version>
+        </dependency>
+
+    </dependencies>
+
+    <build>
+        <finalName>sample</finalName>
+
+        <plugins>
+
+            <!-- Maven Compiler Plugin -->
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-compiler-plugin</artifactId>
+                <version>${maven.compiler.plugin.version}</version>
+                <configuration>
+                    <source>${java.version}</source>
+                    <target>${java.version}</target>
+                    <encoding>UTF-8</encoding>
+                </configuration>
+            </plugin>
+
+            <!-- Maven WAR Plugin -->
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-war-plugin</artifactId>
+                <version>${maven.war.plugin.version}</version>
+                <configuration>
+                    <warName>sample</warName>
+                    <failOnMissingWebXml>true</failOnMissingWebXml>
+                    <webXml>src/main/webapp/WEB-INF/web.xml</webXml>
+                </configuration>
+            </plugin>
+
+        </plugins>
+    </build>
+
+</project>
