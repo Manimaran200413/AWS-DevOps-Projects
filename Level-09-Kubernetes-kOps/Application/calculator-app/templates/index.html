@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Simple Calculator</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      background: #f0f2f5;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      height: 100vh;
+      margin: 0;
+    }
+    .calculator {
+      background: #fff;
+      padding: 30px 40px;
+      border-radius: 10px;
+      box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+      width: 320px;
+    }
+    h1 {
+      text-align: center;
+      font-size: 22px;
+      margin-bottom: 20px;
+      color: #333;
+    }
+    input, select {
+      width: 100%;
+      padding: 10px;
+      margin: 8px 0;
+      border: 1px solid #ccc;
+      border-radius: 5px;
+      box-sizing: border-box;
+      font-size: 15px;
+    }
+    button {
+      width: 100%;
+      padding: 10px;
+      margin-top: 10px;
+      background: #4CAF50;
+      color: white;
+      border: none;
+      border-radius: 5px;
+      font-size: 16px;
+      cursor: pointer;
+    }
+    button:hover {
+      background: #45a049;
+    }
+    .result {
+      margin-top: 20px;
+      padding: 12px;
+      background: #e8f5e9;
+      border-radius: 5px;
+      text-align: center;
+      font-size: 18px;
+      color: #2e7d32;
+    }
+  </style>
+</head>
+<body>
+  <div class="calculator">
+    <h1>🧮 Simple Calculator</h1>
+    <form method="POST">
+      <input type="text" name="num1" placeholder="Enter first number" value="{{ num1 }}" required>
+      <select name="operator">
+        <option value="+" {% if operator == "+" %}selected{% endif %}>+</option>
+        <option value="-" {% if operator == "-" %}selected{% endif %}>-</option>
+        <option value="*" {% if operator == "*" %}selected{% endif %}>*</option>
+        <option value="/" {% if operator == "/" %}selected{% endif %}>/</option>
+      </select>
+      <input type="text" name="num2" placeholder="Enter second number" value="{{ num2 }}" required>
+      <button type="submit">Calculate</button>
+    </form>
+    {% if result is not none %}
+    <div class="result">Result: {{ result }}</div>
+    {% endif %}
+  </div>
+</body>
+</html>

@@ -1,0 +1,328 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>CALC-01</title>
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<style>
+  :root {
+    --navy-deep: #0a1420;
+    --navy-panel: #101d2e;
+    --navy-line: #1c3350;
+    --cyan: #4dd8c4;
+    --cyan-dim: #2a8f81;
+    --amber: #e8a63b;
+    --amber-dim: #a97826;
+    --off-white: #dce6ee;
+    --muted: #5b7189;
+    --danger: #d3654f;
+    --mono: 'JetBrains Mono', 'SF Mono', 'Consolas', monospace;
+    --sans: 'Inter', -apple-system, 'Segoe UI', sans-serif;
+  }
+
+  * { box-sizing: border-box; }
+
+  body {
+    margin: 0;
+    min-height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background:
+      radial-gradient(ellipse at top, #0d1b2c 0%, var(--navy-deep) 60%);
+    font-family: var(--sans);
+    padding: 24px;
+  }
+
+  .console {
+    width: 340px;
+    background: linear-gradient(180deg, #14263c 0%, var(--navy-panel) 100%);
+    border-radius: 18px;
+    padding: 22px;
+    border: 1px solid var(--navy-line);
+    box-shadow:
+      0 30px 60px -20px rgba(0,0,0,0.7),
+      inset 0 1px 0 rgba(255,255,255,0.04);
+  }
+
+  .nameplate {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 14px;
+    padding: 0 2px;
+  }
+
+  .nameplate .model {
+    font-family: var(--mono);
+    font-size: 11px;
+    letter-spacing: 0.15em;
+    color: var(--muted);
+  }
+
+  .nameplate .status {
+    display: flex;
+    align-items: center;
+    gap: 6px;
+    font-family: var(--mono);
+    font-size: 10px;
+    letter-spacing: 0.1em;
+    color: var(--cyan-dim);
+  }
+
+  .status .dot {
+    width: 6px;
+    height: 6px;
+    border-radius: 50%;
+    background: var(--cyan);
+    box-shadow: 0 0 6px var(--cyan);
+  }
+
+  .display {
+    position: relative;
+    background: #071019;
+    border-radius: 10px;
+    padding: 18px 16px 14px;
+    margin-bottom: 18px;
+    border: 1px solid var(--navy-line);
+    overflow: hidden;
+  }
+
+  .display::before {
+    content: "";
+    position: absolute;
+    inset: 0;
+    background: repeating-linear-gradient(
+      0deg,
+      rgba(77, 216, 196, 0.025) 0px,
+      rgba(77, 216, 196, 0.025) 1px,
+      transparent 1px,
+      transparent 3px
+    );
+    pointer-events: none;
+  }
+
+  .history-line {
+    font-family: var(--mono);
+    font-size: 13px;
+    color: var(--muted);
+    min-height: 18px;
+    text-align: right;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+  }
+
+  .main-line {
+    font-family: var(--mono);
+    font-size: 2.4rem;
+    color: var(--cyan);
+    text-align: right;
+    letter-spacing: 0.01em;
+    text-shadow: 0 0 12px rgba(77, 216, 196, 0.35);
+    white-space: nowrap;
+    overflow-x: auto;
+    scrollbar-width: none;
+    padding-top: 4px;
+  }
+  .main-line::-webkit-scrollbar { display: none; }
+
+  .main-line.error {
+    color: var(--danger);
+    text-shadow: 0 0 12px rgba(211, 101, 79, 0.4);
+  }
+
+  .cursor {
+    display: inline-block;
+    width: 2px;
+    height: 0.85em;
+    background: var(--cyan);
+    margin-left: 2px;
+    vertical-align: -0.1em;
+    animation: blink 1s step-end infinite;
+  }
+  @keyframes blink { 50% { opacity: 0; } }
+
+  .pad {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 9px;
+  }
+
+  button {
+    position: relative;
+    height: 56px;
+    font-family: var(--mono);
+    font-size: 1.05rem;
+    font-weight: 500;
+    border: none;
+    border-radius: 10px;
+    cursor: pointer;
+    color: var(--off-white);
+    background: #1a2c42;
+    box-shadow:
+      0 2px 0 #0d1826,
+      inset 0 1px 0 rgba(255,255,255,0.05);
+    transition: transform 0.06s ease, box-shadow 0.06s ease, background 0.15s ease;
+  }
+  button:hover { background: #21374f; }
+  button:active {
+    transform: translateY(2px);
+    box-shadow: 0 0 0 #0d1826, inset 0 1px 0 rgba(255,255,255,0.05);
+  }
+
+  button.op {
+    background: #3a2c14;
+    color: var(--amber);
+    box-shadow: 0 2px 0 #241a09, inset 0 1px 0 rgba(255,255,255,0.05);
+  }
+  button.op:hover { background: #4a3819; }
+  button.op:active { box-shadow: 0 0 0 #241a09, inset 0 1px 0 rgba(255,255,255,0.05); }
+
+  button.eq {
+    grid-column: span 2;
+    background: linear-gradient(180deg, var(--cyan-dim), #1f6b60);
+    color: #06120f;
+    font-weight: 700;
+    box-shadow: 0 2px 0 #123a33, inset 0 1px 0 rgba(255,255,255,0.15);
+  }
+  button.eq:hover { filter: brightness(1.08); }
+  button.eq:active { box-shadow: 0 0 0 #123a33, inset 0 1px 0 rgba(255,255,255,0.15); }
+
+  button.fn {
+    background: #2a1a1a;
+    color: var(--danger);
+    font-size: 0.9rem;
+    box-shadow: 0 2px 0 #1a0f0f, inset 0 1px 0 rgba(255,255,255,0.05);
+  }
+  button.fn:hover { background: #3a2222; }
+  button.fn:active { box-shadow: 0 0 0 #1a0f0f, inset 0 1px 0 rgba(255,255,255,0.05); }
+
+  .hint {
+    margin-top: 14px;
+    text-align: center;
+    font-family: var(--mono);
+    font-size: 10px;
+    letter-spacing: 0.08em;
+    color: var(--muted);
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    .cursor { animation: none; }
+    button { transition: none; }
+  }
+</style>
+</head>
+<body>
+  <div class="console">
+    <div class="nameplate">
+      <span class="model">CALC-01</span>
+      <span class="status"><span class="dot"></span>READY</span>
+    </div>
+
+    <div class="display">
+      <div class="history-line" id="historyLine">&nbsp;</div>
+      <div class="main-line" id="mainLine">0<span class="cursor"></span></div>
+    </div>
+
+    <div class="pad">
+      <button class="fn" onclick="clearDisplay()">AC</button>
+      <button class="fn" onclick="deleteLast()">DEL</button>
+      <button class="op" onclick="append('%')">%</button>
+      <button class="op" onclick="append('/')">÷</button>
+
+      <button onclick="append('7')">7</button>
+      <button onclick="append('8')">8</button>
+      <button onclick="append('9')">9</button>
+      <button class="op" onclick="append('*')">×</button>
+
+      <button onclick="append('4')">4</button>
+      <button onclick="append('5')">5</button>
+      <button onclick="append('6')">6</button>
+      <button class="op" onclick="append('-')">−</button>
+
+      <button onclick="append('1')">1</button>
+      <button onclick="append('2')">2</button>
+      <button onclick="append('3')">3</button>
+      <button class="op" onclick="append('+')">+</button>
+
+      <button onclick="append('0')">0</button>
+      <button onclick="append('.')">.</button>
+      <button class="eq" onclick="calculate()">=</button>
+    </div>
+
+    <div class="hint">KEYBOARD ENABLED · ENTER = SOLVE · ESC = CLEAR</div>
+  </div>
+
+<script>
+let expression = "";
+let hasError = false;
+const mainLine = document.getElementById("mainLine");
+const historyLine = document.getElementById("historyLine");
+
+function render() {
+  mainLine.classList.toggle("error", hasError);
+  const shown = expression === "" ? "0" : expression;
+  mainLine.innerHTML = shown + '<span class="cursor"></span>';
+  mainLine.scrollLeft = mainLine.scrollWidth;
+}
+
+function append(value) {
+  if (hasError) { expression = ""; hasError = false; }
+  expression += value;
+  render();
+}
+
+function clearDisplay() {
+  expression = "";
+  hasError = false;
+  historyLine.innerHTML = "&nbsp;";
+  render();
+}
+
+function deleteLast() {
+  if (hasError) { expression = ""; hasError = false; render(); return; }
+  expression = expression.slice(0, -1);
+  render();
+}
+
+async function calculate() {
+  if (!expression) return;
+  const prevExpression = expression;
+  try {
+    const res = await fetch("/api/calculate", {
+      method: "POST",
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify({ expression })
+    });
+    const data = await res.json();
+    if (res.ok) {
+      historyLine.textContent = prevExpression + " =";
+      expression = String(data.result);
+      hasError = false;
+    } else {
+      hasError = true;
+      expression = data.error || "Error";
+    }
+  } catch (e) {
+    hasError = true;
+    expression = "Connection error";
+  }
+  render();
+}
+
+// Keyboard support
+window.addEventListener("keydown", (e) => {
+  const key = e.key;
+  if (/^[0-9]$/.test(key)) { append(key); return; }
+  if ("+-*/.%".includes(key)) { append(key); return; }
+  if (key === "Enter" || key === "=") { e.preventDefault(); calculate(); return; }
+  if (key === "Backspace") { deleteLast(); return; }
+  if (key === "Escape") { clearDisplay(); return; }
+  if (key === "(" || key === ")") { append(key); return; }
+});
+
+render();
+</script>
+</body>
+</html>

@@ -1,0 +1,30 @@
+# AWS
+.aws/
+credentials
+
+# Secrets
+.env
+*.secret
+*.key
+*.pem
+*.ppk
+
+# Kubernetes
+*.secret.yaml
+secret.yaml
+secrets.yaml
+
+# Logs
+*.log
+
+# IDE
+.vscode/
+.idea/
+
+# OS
+.DS_Store
+Thumbs.db
+
+# Temporary files
+*.tmp
+*.swp

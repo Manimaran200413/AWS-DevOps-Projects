@@ -16,7 +16,7 @@ Kubernetes, monitoring, and observability.
 | 06 | AWS CI/CD + Terraform | ✅ Completed |
 | 07 | AWS Infrastructure using Terraform | ✅ Completed |
 | 08 | AWS Monitoring using Terraform | ✅ Completed |
-| 09 | Kubernetes + Kops | 🔄 Upcoming |
+| 09 | Kubernetes + Kops | ✅ Completed |
 | 10 | Prometheus + Grafana | 🔄 Upcoming |
 
 ## 🛠️ Technologies
